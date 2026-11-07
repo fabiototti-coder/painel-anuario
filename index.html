@@ -82,8 +82,9 @@ html,body{margin:0;background:var(--color-bg);color:var(--color-fg)}
 .sp-src a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .sp-chip{display:inline-flex;align-items:center;gap:.3em;padding:1px .5em;border-radius:999px;border:1px solid var(--color-border-line);background:var(--color-bg);color:var(--color-fg);font-weight:var(--cds-font-weight-medium);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:var(--cds-font-size-caption)}
 .sp-chip::before{font-size:1.25em;line-height:1}
-.sp-chip[data-dir="up"]::before{content:"▲"}
-.sp-chip[data-dir="down"]::before{content:"▼"}
+.sp-chip[data-dir="up"]::before{content:"▲";color:var(--sp-up,#8a5cc2)}
+.sp-chip[data-dir="down"]::before{content:"▼";color:var(--sp-down,#2f6fd0)}
+.sp-up{color:var(--sp-up,#8a5cc2)}.sp-down{color:var(--sp-down,#2f6fd0)}
 .sp-chip[data-dir="flat"]::before{content:"="}
 .sp-chip[data-dir="nd"]{color:var(--color-fg-muted);font-weight:400}
 .sp-kpi-top{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--cds-gap-sm)}
@@ -159,7 +160,7 @@ td[data-nota]::after{content:" *";color:var(--color-fg-muted)}
 
   <details class="sp-howto" id="como-ler">
     <summary><svg class="sp-info" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="4.6" r="1" fill="currentColor"/><path d="M8 7v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Como ler este painel <span class="sp-howto-hint">Símbolos, limitações dos dados, taxas, notas e siglas</span></summary>
-    <p class="sp-howto-p"><b>Símbolos:</b> ▲ elevação · ▼ queda · = sem variação, sempre em relação a 2024. Indicam apenas o sentido da mudança, sem juízo de valor.</p>
+    <p class="sp-howto-p"><b>Símbolos:</b> <span class="sp-up">▲</span> elevação · <span class="sp-down">▼</span> queda · = sem variação, sempre em relação a 2024. Indicam apenas o sentido da mudança, sem juízo de valor. As cores (roxo para elevação, azul para queda) são as mesmas em todo o painel e não expressam avaliação.</p>
     <ul>
       <li>Os números são registros policiais e administrativos informados pelas Unidades da Federação (UFs). Uma variação pode refletir mudança na ocorrência dos fatos e também na notificação, no registro ou na classificação dos casos.</li>
       <li>As UFs nem sempre registram e classificam os crimes da mesma forma. Diferenças entre estados devem ser lidas considerando essa limitação.</li>
@@ -259,8 +260,8 @@ td[data-nota]::after{content:" *";color:var(--color-fg-muted)}
       <h2 class="sp-h2">Maiores variações nacionais, 2024–2025</h2>
       <p class="sp-note">Indicadores do Brasil com as maiores elevações e quedas percentuais (sobre a taxa, ou sobre o número quando não há taxa). Indicadores expressos em percentual ficam de fora desta lista. Clique em um indicador para comparar os estados.</p>
       <div class="sp-movers">
-        <div><h3 class="sp-h3">▲ Maiores elevações</h3><ul class="sp-mlist" data-draw="g-movers" data-dir="up" data-source="variacao"></ul></div>
-        <div><h3 class="sp-h3">▼ Maiores quedas</h3><ul class="sp-mlist" data-draw="g-movers" data-dir="down" data-source="variacao"></ul></div>
+        <div><h3 class="sp-h3"><span class="sp-up">▲</span> Maiores elevações</h3><ul class="sp-mlist" data-draw="g-movers" data-dir="up" data-source="variacao"></ul></div>
+        <div><h3 class="sp-h3"><span class="sp-down">▼</span> Maiores quedas</h3><ul class="sp-mlist" data-draw="g-movers" data-dir="down" data-source="variacao"></ul></div>
       </div>
     </div>
 
@@ -818,7 +819,8 @@ window.SP_PAISES = {"Estados Unidos": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0
 
   /* indicador de sentido da variação (▲ ▼ =), sem cor de juízo */
   SP.dir = (v) => v == null ? 'nd' : v > 0 ? 'up' : v < 0 ? 'down' : 'flat';
-  SP.chip = (v, kind) => { const c = document.createElement('span'); c.className = 'sp-chip'; c.dataset.dir = SP.dir(v); c.textContent = SP.varf(v, kind); return c; };
+  SP.dirColors = () => { try { const r = document.documentElement.style; r.setProperty('--sp-up', dash.colors[1]); r.setProperty('--sp-down', dash.colors[0]); } catch (e) {} };
+  SP.chip = (v, kind) => { SP.dirColors(); const c = document.createElement('span'); c.className = 'sp-chip'; c.dataset.dir = SP.dir(v); c.textContent = SP.varf(v, kind); return c; };
   SP.flag = (uf, big) => {
     const src = window.SP_FLAGS && window.SP_FLAGS[uf];
     if (!src) return null;
