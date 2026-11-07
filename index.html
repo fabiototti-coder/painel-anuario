@@ -98,6 +98,10 @@ html,body{margin:0;background:var(--color-bg);color:var(--color-fg)}
 .sp-howto{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-md) var(--cds-pad-lg)}
 .sp-siglas{list-style:none;padding:0;margin:.25em 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,22rem),1fr));gap:2px var(--cds-gap-md)}
 .sp-siglas b{color:var(--color-fg)}
+.sp-howto-p{margin:0 0 var(--cds-gap-xs);font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);max-width:110ch}
+.sp-howto summary .sp-howto-hint{display:block;margin-left:1.45em}
+.sp-foot{border-top:1px solid var(--color-border-line);padding-top:var(--cds-gap-sm);font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);max-width:110ch;overflow-wrap:anywhere}
+.sp-foot p{margin:0 0 4px}
 .sp-howto summary{font-size:var(--cds-font-size-body);font-weight:var(--cds-font-weight-medium);cursor:pointer;list-style:none;display:block;min-height:24px}
 .sp-howto summary::-webkit-details-marker{display:none}
 .sp-howto summary::before{content:"▸";display:inline-block;width:1em;font-size:1.1em;line-height:1;margin-right:.35em;transition:transform .15s}
@@ -150,12 +154,11 @@ td[data-nota]::after{content:" *";color:var(--color-fg-muted)}
       <button type="button" class="sp-refresh" id="atualizar" title="Recarrega os dados do painel">↻ Atualizar dados</button>
     </div>
     <p class="sp-sub">Indicadores de 2024 e 2025 por Unidade da Federação e rankings municipais de 2025, a partir da planilha publicada pelo Fórum Brasileiro de Segurança Pública.</p>
-    <p class="sp-src">Fonte dos dados: FÓRUM BRASILEIRO DE SEGURANÇA PÚBLICA. <i>20º Anuário Brasileiro de Segurança Pública 2026</i>. São Paulo: Fórum Brasileiro de Segurança Pública, 2026. Disponível em: <a href="https://publicacoes.forumseguranca.org.br/handle/fbsp/305">https://publicacoes.forumseguranca.org.br/handle/fbsp/305</a>. População: Instituto Brasileiro de Geografia e Estatística (IBGE), Estimativas da População 2025.</p>
-    <p class="sp-src">▲ elevação · ▼ queda · = sem variação, sempre em relação a 2024. Os símbolos indicam apenas o sentido da mudança, sem juízo de valor.</p>
-  </header>
+    </header>
 
   <details class="sp-howto" id="como-ler">
-    <summary>Como ler este painel <span class="sp-howto-hint"> (clique para abrir: limitações dos dados, taxas, notas e siglas)</span></summary>
+    <summary>Como ler este painel <span class="sp-howto-hint">Símbolos, limitações dos dados, taxas, notas e siglas</span></summary>
+    <p class="sp-howto-p"><b>Símbolos:</b> ▲ elevação · ▼ queda · = sem variação, sempre em relação a 2024. Indicam apenas o sentido da mudança, sem juízo de valor.</p>
     <ul>
       <li>Os números são registros policiais e administrativos informados pelas Unidades da Federação (UFs). Uma variação pode refletir mudança na ocorrência dos fatos e também na notificação, no registro ou na classificação dos casos.</li>
       <li>As UFs nem sempre registram e classificam os crimes da mesma forma. Diferenças entre estados devem ser lidas considerando essa limitação.</li>
@@ -563,6 +566,10 @@ td[data-nota]::after{content:" *";color:var(--color-fg-muted)}
       <dt>Fora deste painel</dt><dd>Recortes por sexo, raça/cor e faixa etária, segurança privada, tráfico de pessoas e detalhamento da despesa por subfunção, disponíveis na publicação completa.</dd>
     </dl>
   </details>
+  <footer class="sp-foot" id="fonte">
+    <p><b>Fonte dos dados:</b> FÓRUM BRASILEIRO DE SEGURANÇA PÚBLICA. <i>20º Anuário Brasileiro de Segurança Pública 2026</i>. São Paulo: Fórum Brasileiro de Segurança Pública, 2026. Disponível em: <a href="https://publicacoes.forumseguranca.org.br/handle/fbsp/305">https://publicacoes.forumseguranca.org.br/handle/fbsp/305</a>.</p>
+    <p><b>População:</b> Instituto Brasileiro de Geografia e Estatística (IBGE), Estimativas da População 2025.</p>
+  </footer>
 </div>
 
 
