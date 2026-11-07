@@ -741,15 +741,22 @@ window.SP_PAISES = {"Estados Unidos": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0
     const ml = SP.measure(svg, ticks.map((t) => SP.axis(t, opt.tipo))) + 10;
     const xs = [...new Set(pts.map((p) => p.x))].sort((a, b) => a - b);
     const x = d3.scalePoint(xs, [ml + 6, W - 16]);
+    const lw = SP.measure(svg, ['2025']) + 8;
+    const rot = xs.length * lw > Math.max(1, W - ml - 16);
+    const mb = rot ? 44 : 26; y.range([H - mb, 10]);
     svg.append('g').selectAll('line').data(ticks).join('line')
       .attr('x1', ml).attr('x2', W - 8).attr('y1', (d) => y(d)).attr('y2', (d) => y(d))
       .style('stroke', 'var(--cds-chart-grid)').style('stroke-width', 1);
     svg.append('g').selectAll('text').data(ticks).join('text')
       .attr('x', ml - 6).attr('y', (d) => y(d)).attr('dy', '0.32em').attr('text-anchor', 'end').text((d) => SP.axis(d, opt.tipo));
-    const lw = SP.measure(svg, ['2025']) + 8;
-    const every = Math.max(1, Math.ceil(xs.length * lw / Math.max(1, W - ml - 16)));
-    svg.append('g').selectAll('text').data(xs.filter((d, i) => i === xs.length - 1 || (i % every === 0 && xs.length - 1 - i >= every))).join('text')
-      .attr('x', (d) => x(d)).attr('y', H - 6).attr('text-anchor', 'middle').text((d) => d);
+    if (rot) {
+      svg.append('g').selectAll('text').data(xs).join('text')
+        .attr('transform', (d) => `translate(${x(d) + 4},${H - mb + 14}) rotate(-45)`).attr('text-anchor', 'end')
+        .text((d) => d);
+    } else {
+      svg.append('g').selectAll('text').data(xs).join('text')
+        .attr('x', (d) => x(d)).attr('y', H - 6).attr('text-anchor', 'middle').text((d) => d);
+    }
     const ln = d3.line().defined((p) => p.y != null).x((p) => x(p.x)).y((p) => y(p.y));
     series.forEach((s) => {
       svg.append('path').datum(s.pts).attr('d', ln).style('fill', 'none').style('stroke', s.color)
@@ -758,7 +765,7 @@ window.SP_PAISES = {"Estados Unidos": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0
         .attr('cx', (p) => x(p.x)).attr('cy', (p) => y(p.y)).attr('r', 2.5).style('fill', s.color);
     });
     const tip = SP.tip(el);
-    const rule = svg.append('line').attr('y1', 10).attr('y2', H - 26).style('stroke', 'var(--cds-chart-axis)').style('stroke-width', 1).attr('visibility', 'hidden');
+    const rule = svg.append('line').attr('y1', 10).attr('y2', H - mb).style('stroke', 'var(--cds-chart-axis)').style('stroke-width', 1).attr('visibility', 'hidden');
     svg.append('rect').attr('x', ml).attr('y', 0).attr('width', W - ml).attr('height', H).style('fill', 'transparent')
       .on('mousemove', (ev) => {
         const [mx] = d3.pointer(ev);
