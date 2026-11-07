@@ -96,6 +96,8 @@ html,body{margin:0;background:var(--color-bg);color:var(--color-fg)}
 .sp-flag{display:inline-block;height:1.1em;width:auto;aspect-ratio:auto;vertical-align:-0.15em;margin-right:.4em;border:1px solid var(--color-border-line);border-radius:2px}
 .sp-flag-l{height:2.4rem;margin-right:0;vertical-align:middle}
 .sp-howto{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-md) var(--cds-pad-lg)}
+.sp-siglas{list-style:none;padding:0;margin:.25em 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,22rem),1fr));gap:2px var(--cds-gap-md)}
+.sp-siglas b{color:var(--color-fg)}
 .sp-howto summary{font-size:var(--cds-font-size-body);font-weight:var(--cds-font-weight-medium);cursor:pointer;list-style:none;display:block;min-height:24px}
 .sp-howto summary::-webkit-details-marker{display:none}
 .sp-howto summary::before{content:"▸";display:inline-block;width:1em;font-size:1.1em;line-height:1;margin-right:.35em;transition:transform .15s}
@@ -159,7 +161,8 @@ td[data-nota]::after{content:" *";color:var(--color-fg-muted)}
       <li>As UFs nem sempre registram e classificam os crimes da mesma forma. Diferenças entre estados devem ser lidas considerando essa limitação.</li>
       <li>A taxa relaciona o número de casos à população (ou a outro denominador indicado em cada indicador) e permite comparar lugares de tamanhos diferentes. O número absoluto mostra o volume.</li>
       <li>* indica que a tabela de origem traz uma nota específica para aquele estado; o texto da nota aparece abaixo da tabela ou no detalhe do estado. n.d. indica informação não disponível na fonte.</li>
-      <li><b>Siglas:</b> CP – Código Penal; CVLI – crimes violentos letais intencionais; ECA – Estatuto da Criança e do Adolescente; FBSP – Fórum Brasileiro de Segurança Pública; IBGE – Instituto Brasileiro de Geografia e Estatística; IPCA – Índice Nacional de Preços ao Consumidor Amplo; MVI – mortes violentas intencionais; n.d. – não disponível; ONU – Organização das Nações Unidas; p.p. – pontos percentuais; SINARM – Sistema Nacional de Armas; SISDEPEN – Sistema de Informações do Departamento Penitenciário Nacional; SSP – Secretaria de Segurança Pública; UF – Unidade da Federação.</li>
+      <li><b>Siglas:</b>
+        <ul class="sp-siglas"><li><b>CP</b> – Código Penal</li><li><b>CVLI</b> – crimes violentos letais intencionais</li><li><b>ECA</b> – Estatuto da Criança e do Adolescente</li><li><b>FBSP</b> – Fórum Brasileiro de Segurança Pública</li><li><b>IBGE</b> – Instituto Brasileiro de Geografia e Estatística</li><li><b>IPCA</b> – Índice Nacional de Preços ao Consumidor Amplo</li><li><b>MVI</b> – mortes violentas intencionais</li><li><b>n.d.</b> – não disponível</li><li><b>ONU</b> – Organização das Nações Unidas</li><li><b>p.p.</b> – pontos percentuais</li><li><b>SINARM</b> – Sistema Nacional de Armas</li><li><b>SISDEPEN</b> – Sistema de Informações do Departamento Penitenciário Nacional</li><li><b>SSP</b> – Secretaria de Segurança Pública</li><li><b>UF</b> – Unidade da Federação</li></ul></li>
     </ul>
   </details>
 
