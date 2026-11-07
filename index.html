@@ -99,9 +99,10 @@ html,body{margin:0;background:var(--color-bg);color:var(--color-fg)}
 .sp-siglas{list-style:none;padding:0;margin:.25em 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,22rem),1fr));gap:2px var(--cds-gap-md)}
 .sp-siglas b{color:var(--color-fg)}
 .sp-howto-p{margin:0 0 var(--cds-gap-xs);font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);max-width:110ch}
-.sp-howto summary .sp-howto-hint{display:block;margin-left:1.45em}
+.sp-howto summary .sp-howto-hint{display:block;margin-left:2.8em}
 .sp-foot{border-top:1px solid var(--color-border-line);padding-top:var(--cds-gap-sm);font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);max-width:110ch;overflow-wrap:anywhere}
 .sp-foot p{margin:0 0 4px}
+.sp-info{width:1em;height:1em;vertical-align:-0.15em;margin-right:.35em;flex:none}
 .sp-howto summary{font-size:var(--cds-font-size-body);font-weight:var(--cds-font-weight-medium);cursor:pointer;list-style:none;display:block;min-height:24px}
 .sp-howto summary::-webkit-details-marker{display:none}
 .sp-howto summary::before{content:"▸";display:inline-block;width:1em;font-size:1.1em;line-height:1;margin-right:.35em;transition:transform .15s}
@@ -157,7 +158,7 @@ td[data-nota]::after{content:" *";color:var(--color-fg-muted)}
     </header>
 
   <details class="sp-howto" id="como-ler">
-    <summary>Como ler este painel <span class="sp-howto-hint">Símbolos, limitações dos dados, taxas, notas e siglas</span></summary>
+    <summary><svg class="sp-info" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="4.6" r="1" fill="currentColor"/><path d="M8 7v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Como ler este painel <span class="sp-howto-hint">Símbolos, limitações dos dados, taxas, notas e siglas</span></summary>
     <p class="sp-howto-p"><b>Símbolos:</b> ▲ elevação · ▼ queda · = sem variação, sempre em relação a 2024. Indicam apenas o sentido da mudança, sem juízo de valor.</p>
     <ul>
       <li>Os números são registros policiais e administrativos informados pelas Unidades da Federação (UFs). Uma variação pode refletir mudança na ocorrência dos fatos e também na notificação, no registro ou na classificação dos casos.</li>
@@ -544,7 +545,7 @@ td[data-nota]::after{content:" *";color:var(--color-fg-muted)}
   </section>
 
   <details class="sp-notes" id="notas">
-    <summary>Definições, fontes e observações</summary>
+    <summary><svg class="sp-info" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="4.6" r="1" fill="currentColor"/><path d="M8 7v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Definições, fontes e observações</summary>
     <dl>
       <dt>Fonte</dt><dd>FÓRUM BRASILEIRO DE SEGURANÇA PÚBLICA. <i>20º Anuário Brasileiro de Segurança Pública 2026</i>. São Paulo: Fórum Brasileiro de Segurança Pública, 2026. Disponível em: https://publicacoes.forumseguranca.org.br/handle/fbsp/305. Dados extraídos da planilha de tabelas; cada indicador informa a tabela de origem.</dd>
       <dt>Mortes violentas intencionais (MVI)</dt><dd>Soma das vítimas de homicídio doloso, latrocínio, lesão corporal seguida de morte e mortes decorrentes de intervenção policial.</dd>
