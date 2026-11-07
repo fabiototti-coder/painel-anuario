@@ -96,7 +96,14 @@ html,body{margin:0;background:var(--color-bg);color:var(--color-fg)}
 .sp-flag{display:inline-block;height:1.1em;width:auto;aspect-ratio:auto;vertical-align:-0.15em;margin-right:.4em;border:1px solid var(--color-border-line);border-radius:2px}
 .sp-flag-l{height:2.4rem;margin-right:0;vertical-align:middle}
 .sp-howto{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-md) var(--cds-pad-lg)}
-.sp-howto h2{font-size:var(--cds-font-size-body);font-weight:var(--cds-font-weight-medium);margin:0 0 var(--cds-gap-xs)}
+.sp-howto summary{font-size:var(--cds-font-size-body);font-weight:var(--cds-font-weight-medium);cursor:pointer;list-style:none;display:block;min-height:24px}
+.sp-howto summary::-webkit-details-marker{display:none}
+.sp-howto summary::before{content:"▸";display:inline-block;width:1em;font-size:1.1em;line-height:1;margin-right:.35em;transition:transform .15s}
+.sp-howto[open] summary::before{transform:rotate(90deg)}
+.sp-howto summary .sp-howto-hint{font-weight:400;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.sp-howto[open] summary .sp-howto-hint{display:none}
+.sp-howto[open] summary{margin-bottom:var(--cds-gap-xs)}
+.sp-howto{padding-top:var(--cds-pad-sm);padding-bottom:var(--cds-pad-sm)}
 .sp-howto ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:2px;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);max-width:110ch}
 td[data-nota]::after{content:" *";color:var(--color-fg-muted)}
 .sp-fnotes{list-style:none;margin:var(--cds-gap-sm) 0 0;padding:0;display:flex;flex-direction:column;gap:4px;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
@@ -145,8 +152,8 @@ td[data-nota]::after{content:" *";color:var(--color-fg-muted)}
     <p class="sp-src">▲ elevação · ▼ queda · = sem variação, sempre em relação a 2024. Os símbolos indicam apenas o sentido da mudança, sem juízo de valor.</p>
   </header>
 
-  <section class="sp-howto" id="como-ler" aria-label="Como ler este painel">
-    <h2>Como ler este painel</h2>
+  <details class="sp-howto" id="como-ler">
+    <summary>Como ler este painel <span class="sp-howto-hint"> (clique para abrir: limitações dos dados, taxas, notas e siglas)</span></summary>
     <ul>
       <li>Os números são registros policiais e administrativos informados pelas Unidades da Federação (UFs). Uma variação pode refletir mudança na ocorrência dos fatos e também na notificação, no registro ou na classificação dos casos.</li>
       <li>As UFs nem sempre registram e classificam os crimes da mesma forma. Diferenças entre estados devem ser lidas considerando essa limitação.</li>
@@ -154,7 +161,7 @@ td[data-nota]::after{content:" *";color:var(--color-fg-muted)}
       <li>* indica que a tabela de origem traz uma nota específica para aquele estado; o texto da nota aparece abaixo da tabela ou no detalhe do estado. n.d. indica informação não disponível na fonte.</li>
       <li><b>Siglas:</b> CP – Código Penal; CVLI – crimes violentos letais intencionais; ECA – Estatuto da Criança e do Adolescente; FBSP – Fórum Brasileiro de Segurança Pública; IBGE – Instituto Brasileiro de Geografia e Estatística; IPCA – Índice Nacional de Preços ao Consumidor Amplo; MVI – mortes violentas intencionais; n.d. – não disponível; ONU – Organização das Nações Unidas; p.p. – pontos percentuais; SINARM – Sistema Nacional de Armas; SISDEPEN – Sistema de Informações do Departamento Penitenciário Nacional; SSP – Secretaria de Segurança Pública; UF – Unidade da Federação.</li>
     </ul>
-  </section>
+  </details>
 
   <nav class="sp-tabs" role="tablist" aria-label="Páginas do painel">
     <button class="sp-tab" role="tab" id="tab-geral" data-aba="geral" aria-selected="true">Visão geral</button>
