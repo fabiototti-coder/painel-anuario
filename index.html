@@ -748,7 +748,7 @@ window.SP_PAISES = {"Estados Unidos": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0
       .attr('x', ml - 6).attr('y', (d) => y(d)).attr('dy', '0.32em').attr('text-anchor', 'end').text((d) => SP.axis(d, opt.tipo));
     const lw = SP.measure(svg, ['2025']) + 8;
     const every = Math.max(1, Math.ceil(xs.length * lw / Math.max(1, W - ml - 16)));
-    svg.append('g').selectAll('text').data(xs.filter((d, i) => i % every === 0 || i === xs.length - 1)).join('text')
+    svg.append('g').selectAll('text').data(xs.filter((d, i) => i === xs.length - 1 || (i % every === 0 && xs.length - 1 - i >= every))).join('text')
       .attr('x', (d) => x(d)).attr('y', H - 6).attr('text-anchor', 'middle').text((d) => d);
     const ln = d3.line().defined((p) => p.y != null).x((p) => x(p.x)).y((p) => y(p.y));
     series.forEach((s) => {
