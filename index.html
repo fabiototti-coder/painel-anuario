@@ -1614,7 +1614,7 @@ dash.draw('c-detail', (el) => {
   const h = document.createElement('div'); h.className = 'sp-detail-h';
   const badge = document.createElement('span'); badge.className = 'sp-badge'; badge.textContent = uf;
   const n = document.createElement('span'); n.className = 'sp-detail-n'; n.textContent = r ? r.nome_uf : uf;
-  const fl = uf !== 'BR' ? SP.flag(uf, true) : null;
+  const fl = null; /* sem bandeira em títulos: bandeiras apenas em mapas, tabelas e gráficos */
   if (fl) h.append(fl);
   h.append(badge, n);
   if (r) h.append(SP.chip(r.v.var, r.v.tipo_var));
@@ -1717,7 +1717,7 @@ dash.draw('p-head', (el) => {
   if (I.status !== 'ok') return SP.state(el, I.status);
   const uf = dash.params().uf || 'BR', r = I.get('pop', uf);
   el.replaceChildren();
-  const fl = uf !== 'BR' ? SP.flag(uf, true) : null; if (fl) el.append(fl);
+  const fl = null; /* sem bandeira em títulos: bandeiras apenas em mapas, tabelas e gráficos */ if (fl) el.append(fl);
   const b = document.createElement('span'); b.className = 'sp-badge'; b.textContent = uf;
   const n = document.createElement('span'); n.className = 'sp-detail-n'; n.textContent = r ? r.nome_uf : uf;
   el.append(b, n);
