@@ -2033,8 +2033,7 @@ dash.draw('at-fonte', (el) => {
 });
 dash.draw('at-uf-nome', (el) => {
   const I = window.AT.idx(); if (I.status !== 'ok') return window.SP.state(el, I.status);
-  const uf = window.AT.uf(), fl = uf !== 'BR' ? window.SP.flag(uf) : null;
-  el.replaceChildren(); if (fl) el.append(fl); el.append(window.AT.nomeUf(I, uf));
+  el.textContent = window.AT.nomeUf(I, window.AT.uf());
 });
 
 /* mapa */
@@ -2153,9 +2152,7 @@ const atMun = () => {
 };
 dash.draw('at-mun-escopo', (el) => {
   const X = atMun(); if (X.status !== 'ok') return window.SP.state(el, X.status);
-  el.replaceChildren();
-  const fl = X.uf ? window.SP.flag(X.uf) : null; if (fl) el.append(fl);
-  el.append(X.uf ? (X.rows[0] ? X.rows[0].nome_uf : X.uf) + ' (' + X.rows.length + (X.rows.length === 1 ? ' município)' : ' municípios)') : '30 maiores taxas do país');
+  el.textContent = X.uf ? (X.rows[0] ? X.rows[0].nome_uf : X.uf) + ' (' + X.rows.length + (X.rows.length === 1 ? ' município)' : ' municípios)') : '30 maiores taxas do país';
 });
 dash.draw('at-mun', (tb) => {
   const SP = window.SP, X = atMun();
