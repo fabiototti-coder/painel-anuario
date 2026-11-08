@@ -1948,7 +1948,6 @@ dash.draw('pr-mnotas', (el) => {
   if (d.status !== 'ok') return;
   d.data.forEach((r) => {
     const li = document.createElement('li'); const b = document.createElement('b'); b.textContent = r.pais + ': ';
-    if (window.SP_PAISES && window.SP_PAISES[r.pais]) { const im = document.createElement('img'); im.src = window.SP_PAISES[r.pais]; im.alt = ''; im.className = 'sp-flag'; li.append(im); }
     li.append(b, (r.nota ? r.nota + ' ' : '') + 'Fonte: ' + r.fonte + '. Base populacional da taxa: ' + r.base_populacional + '.');
     el.append(li);
   });
